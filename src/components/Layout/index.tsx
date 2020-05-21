@@ -6,6 +6,7 @@ import styled, {
 } from "styled-components";
 
 import useDarkMode from "../../hooks/useDarkMode";
+import Header from "./Header";
 
 function Layout() {
   const darkMode = useDarkMode();
@@ -18,6 +19,7 @@ function Layout() {
     <ThemeProvider theme={theme}>
       <Wrap>
         <GlobalStyle />
+        <Header />
       </Wrap>
     </ThemeProvider>
   );
