@@ -1,9 +1,27 @@
-import { useState, useEffect } from "react";
+import { useEffect, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import themeSlice from "../store/slices/theme";
+import { RootState } from "../store/reducers";
 
 function useDarkMode() {
-  const [darkMode, setDarkMode] = useState(false);
+  const darkMode = useSelector((state: RootState) => state.theme.isDark);
+  const dispatch = useDispatch();
 
+  const setDarkMode = useCallback(
+    (v: boolean) => {
+      dispatch(themeSlice.actions.setDark(v));
+    },
+    [dispatch]
+  );
+  return { isDark: darkMode, setDarkMode };
+}
+
+export function useDarkModeEffects() {
+  const dispatch = useDispatch();
   useEffect(() => {
+    function setDarkMode(v: boolean) {
+      dispatch(themeSlice.actions.setDark(v));
+    }
     const eventListener = (e: any) => {
       setDarkMode(!!e.matches);
     };
@@ -24,9 +42,7 @@ function useDarkMode() {
         matchMedia.removeEventListener("change", eventListener);
       matchMedia.removeListener && matchMedia.removeListener(eventListener);
     };
-  }, []);
-
-  return darkMode;
+  }, [dispatch]);
 }
 
 export default useDarkMode;
