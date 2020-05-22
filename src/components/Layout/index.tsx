@@ -31,9 +31,10 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         margin: 0;
-        font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 'Noto Sans KR', sans-serif;
         transition: background 0.5s, color 0.5s;
-
+    }
+    * {
+      font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 'Noto Sans KR', sans-serif;
     }
     
     /* Dark Mode*/
