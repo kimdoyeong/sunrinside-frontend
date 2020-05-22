@@ -1,8 +1,11 @@
-import { createStore as createReduxStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import reducers from "./reducers";
 
 function createStore() {
-  const store = createReduxStore(reducers);
+  const store = configureStore({
+    reducer: reducers,
+    devTools: process.env.NODE_ENV === "development",
+  });
 
   return store;
 }
