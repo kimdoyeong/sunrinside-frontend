@@ -37,6 +37,7 @@ function LoginModal() {
           <Input
             type="text"
             name="username"
+            autoComplete="username"
             ref={register({ required: true })}
           />
         </WrapInput>
@@ -44,6 +45,7 @@ function LoginModal() {
           <Input
             type="password"
             name="password"
+            autoComplete="current-password"
             ref={register({ required: true })}
           />
         </WrapInput>
