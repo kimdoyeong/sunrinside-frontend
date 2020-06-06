@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "../UI/Modal";
 import Input, { WrapInput } from "../UI/Input";
 import Button from "../UI/Button";
+import { Link } from "react-router-dom";
 function LoginModal() {
   return (
     <Modal modalName="login">
@@ -15,6 +16,8 @@ function LoginModal() {
           <Input type="password" />
         </WrapInput>
         <Button full>로그인</Button>
+        <hr />
+        <Link to="/signup">회원가입</Link>
       </form>
     </Modal>
   );
