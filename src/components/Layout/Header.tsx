@@ -40,6 +40,8 @@ const Wrap = styled.header`
   justify-content: space-between;
   align-items: center;
   height: 60px;
+  padding-left: 1em;
+  padding-right: 1em;
 
   .login {
     cursor: pointer;
