@@ -25,5 +25,13 @@ const User = {
       throw parseError(e);
     }
   },
+  async auth({ username, password }: { username: string; password: string }) {
+    try {
+      const req = await getClient().post("/auth", { username, password });
+      return req.data.data.token;
+    } catch (e) {
+      throw parseError(e);
+    }
+  },
 };
 export default User;
