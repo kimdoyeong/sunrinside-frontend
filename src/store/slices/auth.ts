@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import User from "../../lib/api/user";
 import { setToken, getToken } from "../../lib/token";
 
@@ -35,8 +35,8 @@ const authSlice = createSlice({
       state.isLogin = true;
       state.pending = false;
     });
-    builder.addCase(Login.rejected, (state, action: PayloadAction<any>) => {
-      state.error = action.payload.message;
+    builder.addCase(Login.rejected, (state, action: any) => {
+      state.error = action.error.message;
       state.pending = false;
     });
   },
