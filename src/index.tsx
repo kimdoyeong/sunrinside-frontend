@@ -6,9 +6,12 @@ import * as serviceWorker from "./serviceWorker";
 import store from "./store";
 import { setModalRoot } from "./components/UI/Modal";
 import { BrowserRouter } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const root = document.getElementById("root");
 
+toast.configure();
 root && setModalRoot(root);
 ReactDOM.render(
   <React.StrictMode>
