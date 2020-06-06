@@ -5,11 +5,11 @@ import { getToken } from "../token";
 interface getClientOptions {
   auth?: boolean;
 }
-function getClient({ auth }: getClientOptions) {
+function getClient(options?: getClientOptions) {
   return axios.create({
     baseURL: env.REACT_APP_API,
     headers: {
-      Authorization: auth && getToken(),
+      Authorization: options?.auth && getToken(),
     },
   });
 }
