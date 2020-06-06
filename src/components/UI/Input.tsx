@@ -7,7 +7,7 @@ const Input = styled.input`
   box-sizing: border-box;
   padding: 0.5em 1em;
   border: 0;
-  background: #c0c8cc;
+  background: #dde6eb;
   border-radius: 0.5em;
 
   &:focus {
