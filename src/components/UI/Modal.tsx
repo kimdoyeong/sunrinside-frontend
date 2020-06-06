@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styled, { css, ThemeProvider } from "styled-components";
 import { Modals } from "../../store/slices/modal";
 import useModal from "../../hooks/useModal";
 import useTheme from "../../hooks/useTheme";
+import { useLocation } from "react-router-dom";
 interface ModalProps {
   children?: React.ReactNode;
   modalName: Modals;
@@ -12,6 +13,11 @@ interface ModalProps {
 function Modal({ children, modalName }: ModalProps) {
   const { isOpen, close } = useModal(modalName);
   const theme = useTheme();
+  const location = useLocation();
+
+  useEffect(() => {
+    close();
+  }, [location, close]);
 
   if (!isOpen) return null;
   const jsx = (
