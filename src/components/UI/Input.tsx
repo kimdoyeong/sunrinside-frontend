@@ -19,6 +19,9 @@ const Input = styled.input`
     css`
       background: #45484a;
       color: white;
+      ::placeholder {
+        color: #b5b5b5;
+      }
     `}
 `;
 
