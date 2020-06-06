@@ -8,14 +8,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/reducers";
 import { toast } from "react-toastify";
 import { Login } from "../../store/slices/auth";
+import useModal from "../../hooks/useModal";
 function LoginModal() {
   const { register, handleSubmit } = useForm();
+  const { close } = useModal("login");
+
   const dispatch = useDispatch();
-  const { error, pending } = useSelector((state: RootState) => state.auth);
+  const { error, pending, isLogin } = useSelector(
+    (state: RootState) => state.auth
+  );
 
   useEffect(() => {
     error && toast.error(error);
   }, [error]);
+  useEffect(() => {
+    isLogin && close();
+  }, [isLogin, close]);
 
   function onsubmit(data: any) {
     dispatch(Login(data));
