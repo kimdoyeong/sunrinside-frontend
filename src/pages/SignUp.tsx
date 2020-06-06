@@ -1,6 +1,8 @@
 import React from "react";
 import { css } from "styled-components";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 import Layout from "../components/Layout";
 import Heading from "../components/UI/Heading";
@@ -8,14 +10,25 @@ import Input, { WrapInput } from "../components/UI/Input";
 import Flex from "../components/UI/Flex";
 import viewport from "../constants/viewport";
 import Button from "../components/UI/Button";
+import User from "../lib/api/user";
 
 function SignUpPage() {
   const { register, handleSubmit, watch, errors } = useForm({
     mode: "onChange",
   });
+  const history = useHistory();
   const password = watch("password");
 
-  function onSubmit() {}
+  function onSubmit(data: any) {
+    User.createUser(data)
+      .then(() => {
+        toast.done("회원가입이 완료되었습니다.");
+        history.replace("/");
+      })
+      .catch((e) => {
+        toast.error(e.message);
+      });
+  }
   return (
     <Layout>
       <div style={{ maxWidth: 640, margin: "auto" }}>
@@ -32,6 +45,9 @@ function SignUpPage() {
                   value: 6,
                   message: "아이디는 6자 이상이어야 합니다.",
                 },
+                validate: async (username) =>
+                  !(await User.checkExists(username)) ||
+                  "이미 있는 유저입니다.",
               })}
             />
           </WrapInput>
