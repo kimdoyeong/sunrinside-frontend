@@ -28,24 +28,32 @@ const Input = styled.input`
 
 interface WrapInputProps {
   children?: React.ReactNode;
+  error?: { type: string; message: string };
   fieldName: string;
 }
-export function WrapInput({ fieldName, children }: WrapInputProps) {
+export function WrapInput({ fieldName, children, error }: WrapInputProps) {
   return (
     <WrapInputStyle>
       <label>
         <span>{fieldName}</span>
         {children}
       </label>
+      <div className="error">{error && error.message}</div>
     </WrapInputStyle>
   );
 }
 const WrapInputStyle = styled.div`
+  position: relative;
   label > span {
     display: block;
     margin-bottom: 3px;
   }
-  margin-bottom: 1em;
+  .error {
+    color: red;
+    height: 1em;
+    margin-top: 0.1em;
+    margin-bottom: 0.4em;
+  }
 `;
 
 export default Input;
