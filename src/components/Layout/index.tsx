@@ -7,6 +7,7 @@ import styled, {
 
 import Header from "./Header";
 import useTheme from "../../hooks/useTheme";
+import viewport from "../../lib/viewport";
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -50,6 +51,16 @@ const GlobalStyle = createGlobalStyle`
         }
       `}
 `;
-const Wrap = styled.div``;
+const Wrap = styled.div`
+  & > article {
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 1em;
+
+    @media screen and (min-width: ${viewport.desktop}) {
+      padding: 1em 8vw;
+    }
+  }
+`;
 
 export default Layout;
