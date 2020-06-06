@@ -4,7 +4,7 @@ import styled, {
   ThemeProvider,
   css,
 } from "styled-components";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 import Header from "./Header";
 import useTheme from "../../hooks/useTheme";
@@ -49,6 +49,10 @@ const GlobalStyle = createGlobalStyle`
     a {
       color: #0073ff;
       text-decoration: none;
+    }
+    hr {
+      border: 0;
+      border-bottom: 1px solid gray;
     }
     /* Dark Mode*/
     ${(props) =>

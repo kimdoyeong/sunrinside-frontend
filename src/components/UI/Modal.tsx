@@ -1,45 +1,35 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import styled, { css, ThemeProvider } from "styled-components";
 import { Modals } from "../../store/slices/modal";
 import useModal from "../../hooks/useModal";
 import useTheme from "../../hooks/useTheme";
-import { BrowserRouter } from "react-router-dom";
 interface ModalProps {
   children?: React.ReactNode;
   modalName: Modals;
 }
 
-let root: HTMLElement | undefined;
-
 function Modal({ children, modalName }: ModalProps) {
   const { isOpen, close } = useModal(modalName);
   const theme = useTheme();
 
-  if (!root || !isOpen) return null;
+  if (!isOpen) return null;
   const jsx = (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <ModalOverlay onClick={close}>
-          <ModalBody
-            role="dialog"
-            aria-modal="true"
-            tabIndex={-1}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {children}
-          </ModalBody>
-        </ModalOverlay>
-      </BrowserRouter>
+      <ModalOverlay onClick={close}>
+        <ModalBody
+          role="dialog"
+          aria-modal="true"
+          tabIndex={-1}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {children}
+        </ModalBody>
+      </ModalOverlay>
     </ThemeProvider>
   );
 
-  return ReactDOM.createPortal(jsx, root);
-}
-
-export function setModalRoot(element: HTMLElement) {
-  root = element;
+  return jsx;
 }
 
 const ModalOverlay = styled.div`
