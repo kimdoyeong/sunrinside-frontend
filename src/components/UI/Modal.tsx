@@ -72,6 +72,9 @@ const ModalBody = styled.div`
   border-radius: 10px;
   transition: background 0.5s;
 
+  &:focus {
+    outline: 0;
+  }
   ${({ theme }) =>
     theme.isDark &&
     css`
