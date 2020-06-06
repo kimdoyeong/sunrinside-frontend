@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import viewport from "../../lib/viewport";
+import viewport from "../../constants/viewport";
 import UISwitch from "../UI/Switch";
 import useDarkMode from "../../hooks/useDarkMode";
 import useModal from "../../hooks/useModal";

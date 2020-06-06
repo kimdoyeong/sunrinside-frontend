@@ -7,7 +7,7 @@ import styled, {
 
 import Header from "./Header";
 import useTheme from "../../hooks/useTheme";
-import viewport from "../../lib/viewport";
+import viewport from "../../constants/viewport";
 
 interface LayoutProps {
   children?: React.ReactNode;
