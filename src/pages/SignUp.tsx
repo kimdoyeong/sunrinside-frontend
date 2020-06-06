@@ -14,7 +14,6 @@ function SignUpPage() {
     mode: "onChange",
   });
   const password = watch("password");
-  console.log(errors);
 
   function onSubmit() {}
   return (
