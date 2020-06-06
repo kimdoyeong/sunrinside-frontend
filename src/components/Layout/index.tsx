@@ -8,7 +8,10 @@ import styled, {
 import Header from "./Header";
 import useTheme from "../../hooks/useTheme";
 
-function Layout() {
+interface LayoutProps {
+  children?: React.ReactNode;
+}
+function Layout({ children }: LayoutProps) {
   const theme = useTheme();
 
   return (
@@ -16,6 +19,7 @@ function Layout() {
       <Wrap>
         <GlobalStyle />
         <Header />
+        <article>{children}</article>
       </Wrap>
     </ThemeProvider>
   );
