@@ -31,6 +31,11 @@ const GlobalStyle = createGlobalStyle`
     * {
       font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 'Noto Sans KR', sans-serif;
     }
+
+    a {
+      color: #0073ff;
+      text-decoration: none;
+    }
     /* Dark Mode*/
     ${(props) =>
       props.theme.isDark &&
