@@ -5,6 +5,7 @@ import { setToken, getToken } from "../../lib/token";
 interface AuthType {
   token: string | null;
   isLogin: boolean;
+  pending: boolean;
   error?: string;
 }
 export const Login = createAsyncThunk(
@@ -18,6 +19,7 @@ export const Login = createAsyncThunk(
 const initialState: AuthType = {
   token: getToken(),
   isLogin: !!getToken(),
+  pending: false,
 };
 const authSlice = createSlice({
   name: "auth",
@@ -25,14 +27,17 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(Login.pending, (state, action) => {
+      state.pending = true;
       delete state.error;
     });
     builder.addCase(Login.fulfilled, (state, action) => {
       state.token = action.payload;
       state.isLogin = true;
+      state.pending = false;
     });
     builder.addCase(Login.rejected, (state, action: PayloadAction<any>) => {
       state.error = action.payload.message;
+      state.pending = false;
     });
   },
 });
