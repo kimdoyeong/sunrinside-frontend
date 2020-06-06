@@ -38,7 +38,8 @@ export function WrapInput({ fieldName, children }: WrapInputProps) {
 }
 const WrapInputStyle = styled.div`
   label > span {
-    margin-bottom: 5px;
+    display: block;
+    margin-bottom: 3px;
   }
   margin-bottom: 1em;
 `;
