@@ -5,6 +5,7 @@ import styled, { css, ThemeProvider } from "styled-components";
 import { Modals } from "../../store/slices/modal";
 import useModal from "../../hooks/useModal";
 import useTheme from "../../hooks/useTheme";
+import { BrowserRouter } from "react-router-dom";
 interface ModalProps {
   children?: React.ReactNode;
   modalName: Modals;
@@ -19,16 +20,18 @@ function Modal({ children, modalName }: ModalProps) {
   if (!root || !isOpen) return null;
   const jsx = (
     <ThemeProvider theme={theme}>
-      <ModalOverlay onClick={close}>
-        <ModalBody
-          role="dialog"
-          aria-modal="true"
-          tabIndex={-1}
-          onClick={(e) => e.stopPropagation()}
-        >
-          {children}
-        </ModalBody>
-      </ModalOverlay>
+      <BrowserRouter>
+        <ModalOverlay onClick={close}>
+          <ModalBody
+            role="dialog"
+            aria-modal="true"
+            tabIndex={-1}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {children}
+          </ModalBody>
+        </ModalOverlay>
+      </BrowserRouter>
     </ThemeProvider>
   );
 
