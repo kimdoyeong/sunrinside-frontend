@@ -4,6 +4,7 @@ import styled, {
   ThemeProvider,
   css,
 } from "styled-components";
+import {Helmet} from "react-helmet";
 
 import Header from "./Header";
 import useTheme from "../../hooks/useTheme";
@@ -17,6 +18,12 @@ function Layout({ children }: LayoutProps) {
 
   return (
     <ThemeProvider theme={theme}>
+      <Helmet>
+        <link
+          rel="stylesheet"
+          href="'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')"
+        />
+      </Helmet>
       <Wrap>
         <GlobalStyle />
         <Header />
@@ -27,7 +34,6 @@ function Layout({ children }: LayoutProps) {
 }
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
     body {
         margin: 0;
