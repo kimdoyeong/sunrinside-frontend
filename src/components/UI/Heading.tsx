@@ -2,8 +2,8 @@ import React from "react";
 
 type HeadingTags = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 interface HeadingProps {
-  tag: HeadingTags;
-  style: HeadingTags;
+  tag?: HeadingTags;
+  style?: HeadingTags;
   children?: React.ReactNode;
 }
 function Heading({ tag = "h1", style = "h1", children }: HeadingProps) {
@@ -20,6 +20,8 @@ function Heading({ tag = "h1", style = "h1", children }: HeadingProps) {
     <Tag
       style={{
         fontSize: styles[style],
+        marginTop: 0,
+        marginBottom: ".5em",
       }}
     >
       {children}
