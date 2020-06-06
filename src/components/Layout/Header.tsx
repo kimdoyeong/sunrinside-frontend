@@ -3,8 +3,11 @@ import styled from "styled-components";
 import viewport from "../../lib/viewport";
 import UISwitch from "../UI/Switch";
 import useDarkMode from "../../hooks/useDarkMode";
+import useModal from "../../hooks/useModal";
 function Header() {
   const { isDark, setDarkMode } = useDarkMode();
+  const { open } = useModal("login");
+
   return (
     <Wrap>
       <div className="left">
@@ -24,7 +27,7 @@ function Header() {
         />
       </div>
       <div className="right">
-        <div className="login" role="button">
+        <div className="login" role="button" onClick={open}>
           로그인
         </div>
       </div>

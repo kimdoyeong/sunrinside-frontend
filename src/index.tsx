@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import Modal from "react-modal";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import store from "./store";
+import { setModalRoot } from "./components/UI/Modal";
 
 const root = document.getElementById("root");
 
-root && Modal.setAppElement(root);
+root && setModalRoot(root);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

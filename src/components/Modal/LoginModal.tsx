@@ -1,10 +1,8 @@
 import React from "react";
-import Modal from "react-modal";
-import useModal from "../../hooks/useModal";
+import Modal from "../UI/Modal";
 function LoginModal() {
-  const { isOpen, close } = useModal("login");
   return (
-    <Modal isOpen={isOpen} onRequestClose={close}>
+    <Modal modalName="login">
       <h1>로그인</h1>
     </Modal>
   );

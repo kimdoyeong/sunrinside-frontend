@@ -5,16 +5,11 @@ import styled, {
   css,
 } from "styled-components";
 
-import useDarkMode, { useDarkModeEffects } from "../../hooks/useDarkMode";
 import Header from "./Header";
+import useTheme from "../../hooks/useTheme";
 
 function Layout() {
-  const { isDark } = useDarkMode();
-  useDarkModeEffects();
-
-  const theme = {
-    isDark,
-  };
+  const theme = useTheme();
 
   return (
     <ThemeProvider theme={theme}>
@@ -36,7 +31,6 @@ const GlobalStyle = createGlobalStyle`
     * {
       font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', 'Noto Sans KR', sans-serif;
     }
-    
     /* Dark Mode*/
     ${(props) =>
       props.theme.isDark &&

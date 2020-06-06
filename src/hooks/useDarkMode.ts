@@ -16,9 +16,14 @@ function useDarkMode() {
   return { isDark: darkMode, setDarkMode };
 }
 
+let isDarkModeEffectApplyed = false;
+
 export function useDarkModeEffects() {
   const dispatch = useDispatch();
   useEffect(() => {
+    if (isDarkModeEffectApplyed) return;
+    isDarkModeEffectApplyed = true;
+
     function setDarkMode(v: boolean) {
       dispatch(themeSlice.actions.setDark(v));
     }
