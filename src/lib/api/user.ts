@@ -1,7 +1,7 @@
 import getClient from "./client";
 import parseError from "./parseError";
 
-const Auth = {
+const User = {
   async createUser({
     username,
     password,
@@ -18,4 +18,4 @@ const Auth = {
     }
   },
 };
-export default Auth;
+export default User;
