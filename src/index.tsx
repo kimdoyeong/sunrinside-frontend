@@ -5,6 +5,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import store from "./store";
 import { setModalRoot } from "./components/UI/Modal";
+import { BrowserRouter } from "react-router-dom";
 
 const root = document.getElementById("root");
 
@@ -12,7 +13,9 @@ root && setModalRoot(root);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   root
