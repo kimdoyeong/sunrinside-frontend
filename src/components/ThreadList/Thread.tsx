@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import colors from "../../constants/colors";
 import viewport from "../../constants/viewport";
 import { Link } from "react-router-dom";
@@ -47,6 +47,12 @@ const Wrap = styled.div`
   border-radius: 0.5em;
   padding: 0.5em 1em;
   align-items: center;
+
+  ${({ theme }) =>
+    theme.isDark &&
+    css`
+      background: ${colors.primaryBlack1};
+    `}
 
   @media screen and (max-width: ${viewport.mobile}) {
     font-size: 0.8rem;

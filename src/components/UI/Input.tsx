@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import colors from "../../constants/colors";
 
 const Input = styled.input`
   display: block;
@@ -7,7 +8,7 @@ const Input = styled.input`
   box-sizing: border-box;
   padding: 0.5em 1em;
   border: 0;
-  background: #dde6eb;
+  background: ${colors.primaryWhite1};
   border-radius: 0.5em;
   font-size: 1rem;
 
@@ -18,7 +19,7 @@ const Input = styled.input`
   ${({ theme }) =>
     theme.isDark &&
     css`
-      background: #45484a;
+      background: ${colors.primaryBlack1};
       color: white;
       ::placeholder {
         color: #b5b5b5;
