@@ -40,5 +40,12 @@ const User = {
       throw parseError(e);
     }
   },
+  async verifyCode({ id, code }: { id: string; code: string }) {
+    try {
+      await getClient().put("/user/" + id + "/email_code?code=" + code);
+    } catch (e) {
+      throw parseError(e);
+    }
+  },
 };
 export default User;
