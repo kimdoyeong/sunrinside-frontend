@@ -10,10 +10,13 @@ import Header from "./Header";
 import useTheme from "../../hooks/useTheme";
 import viewport from "../../constants/viewport";
 
-interface LayoutProps {
+interface WrapProps {
+  center?: boolean;
+}
+interface LayoutProps extends WrapProps {
   children?: React.ReactNode;
 }
-function Layout({ children }: LayoutProps) {
+function Layout({ children, ...layoutProps }: LayoutProps) {
   const theme = useTheme();
 
   return (
@@ -24,7 +27,7 @@ function Layout({ children }: LayoutProps) {
           href="'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')"
         />
       </Helmet>
-      <Wrap>
+      <Wrap {...layoutProps}>
         <GlobalStyle />
         <Header />
         <article>{children}</article>
@@ -64,10 +67,11 @@ const GlobalStyle = createGlobalStyle`
         }
       `}
 `;
-const Wrap = styled.div`
+const Wrap = styled.div<WrapProps>`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  
   & > article {
     flex: 1;
     display: flex;
@@ -75,6 +79,11 @@ const Wrap = styled.div`
     box-sizing: border-box;
     padding: 1em;
 
+    ${({ center }) =>
+      center &&
+      css`
+        align-items: center;
+      `}
     @media screen and (min-width: ${viewport.desktop}) {
       padding: 1em 8vw;
     }

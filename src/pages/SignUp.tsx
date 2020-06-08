@@ -30,8 +30,8 @@ function SignUpPage() {
       });
   }
   return (
-    <Layout>
-      <div style={{ maxWidth: 640, margin: "auto" }}>
+    <Layout center>
+      <div style={{ maxWidth: 640, width: "100%", marginTop: "3em" }}>
         <Heading>회원가입</Heading>
         <form onSubmit={handleSubmit(onSubmit)}>
           <WrapInput fieldName="아이디" error={errors.username}>
