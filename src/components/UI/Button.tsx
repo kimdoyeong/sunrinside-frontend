@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import colors from "../../constants/colors";
 
 interface ButtonProps {
   full?: Boolean;
@@ -10,7 +11,7 @@ const Button = styled.button<ButtonProps>`
   padding: 0.5em 1em;
   border: 0;
   border-radius: 0.5em;
-  background: #0073ff;
+  background: ${colors.primary};
   color: white;
 
   ${({ full }) =>
