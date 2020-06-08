@@ -65,8 +65,13 @@ const GlobalStyle = createGlobalStyle`
       `}
 `;
 const Wrap = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   & > article {
-    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     padding: 1em;
 
