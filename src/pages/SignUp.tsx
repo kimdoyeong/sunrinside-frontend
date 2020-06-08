@@ -22,7 +22,6 @@ function SignUpPage() {
   function onSubmit(data: any) {
     User.createUser(data)
       .then(() => {
-        toast.done("회원가입이 완료되었습니다.");
         history.replace("/");
       })
       .catch((e) => {
@@ -78,6 +77,20 @@ function SignUpPage() {
               />
             </WrapInput>
           </Flex>
+          <WrapInput fieldName="이메일" error={errors.email}>
+            <Input
+              type="email"
+              autoComplete="email"
+              name="email"
+              ref={register({
+                required: true,
+                pattern: {
+                  message: "@sunrint.hs.kr 이메일이 필요합니다.",
+                  value: /@sunrint\.hs\.kr$/,
+                },
+              })}
+            />
+          </WrapInput>
           <WrapInput fieldName="이름" error={errors.name}>
             <Input
               type="text"
@@ -88,6 +101,7 @@ function SignUpPage() {
             />
           </WrapInput>
           <Button full>회원가입</Button>
+          <p>회원가입 후, 인증 이메일을 확인해주세요.</p>
         </form>
       </div>
     </Layout>

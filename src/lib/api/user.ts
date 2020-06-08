@@ -6,13 +6,20 @@ const User = {
     username,
     password,
     name,
+    email,
   }: {
     username: string;
     password: string;
     name: string;
+    email: string;
   }) {
     try {
-      return await getClient().post("/user", { username, password, name });
+      return await getClient().post("/user", {
+        username,
+        password,
+        name,
+        email,
+      });
     } catch (e) {
       throw parseError(e);
     }
