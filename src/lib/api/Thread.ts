@@ -3,8 +3,6 @@ import getQueryString from "../getQueryString";
 import parseError from "./parseError";
 
 class Thread {
-  private static client = getClient({ auth: true });
-
   public static async getThreadList(obj: {
     type: string;
     limit?: number;
@@ -13,7 +11,7 @@ class Thread {
     const qs = "?" + getQueryString(obj);
 
     try {
-      const data = await this.client.get("/thread" + qs);
+      const data = await getClient({ auth: true }).get("/thread" + qs);
       return data.data.data;
     } catch (e) {
       throw parseError(e);
