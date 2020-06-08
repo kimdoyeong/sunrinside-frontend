@@ -4,8 +4,12 @@ import Layout from "../components/Layout";
 import Heading from "../components/UI/Heading";
 import { Link } from "react-router-dom";
 import Button from "../components/UI/Button";
+import useLogin from "../hooks/useLogin";
+import ListPage from "./ListPage";
 
 function IndexPage() {
+  const login = useLogin();
+  if (login.isLogin) return <ListPage />;
   return (
     <Layout>
       <Style>
