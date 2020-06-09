@@ -17,5 +17,14 @@ class Thread {
       throw parseError(e);
     }
   }
+
+  public static async getThread(id: string) {
+    try {
+      const data = await getClient({ auth: true }).get("/thread/" + id);
+      return data.data.data;
+    } catch (e) {
+      throw parseError(e);
+    }
+  }
 }
 export default Thread;
