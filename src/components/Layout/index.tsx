@@ -15,8 +15,9 @@ interface WrapProps {
 }
 interface LayoutProps extends WrapProps {
   children?: React.ReactNode;
+  title?: string;
 }
-function Layout({ children, ...layoutProps }: LayoutProps) {
+function Layout({ children, title, ...layoutProps }: LayoutProps) {
   const theme = useTheme();
 
   return (
@@ -26,6 +27,7 @@ function Layout({ children, ...layoutProps }: LayoutProps) {
           rel="stylesheet"
           href="'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')"
         />
+        {title && <title>{title}</title>}
       </Helmet>
       <Wrap {...layoutProps}>
         <GlobalStyle />
