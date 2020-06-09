@@ -1583,6 +1583,13 @@
   dependencies:
     react-icons "*"
 
+"@types/react-loader@^2.4.4":
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@types/react-loader/-/react-loader-2.4.4.tgz#d6904b9dba3cdce55d97bf0732e0701b3f1c1300"
+  integrity sha512-XH/Bk9wW4tYKZ6CxjXxv/qH7dJb5wHVfLzEcuh0BX6qVOR+lWt+y3NmcUHBWl1JOUkBLbCb4DGWSVI9Uq63Z0Q==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-native@*":
   version "0.62.10"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.62.10.tgz#82c481df21db4e7460755dc3fc7091e333a1d2bd"
@@ -7031,6 +7038,11 @@ mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@~0.5.1:
   integrity sha512-P+2gwrFqx8lhew375MQHHeTlY8AuOJSrGf0R5ddkEndUkmwpgUob/vQuBD1V22/Cw1/lJr4x+EjllSezBThzBg==
   dependencies:
     minimist "^1.2.5"
+
+moment@^2.26.0:
+  version "2.26.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.26.0.tgz#5e1f82c6bafca6e83e808b30c8705eed0dcbd39a"
+  integrity sha512-oIixUO+OamkUkwjhAVE18rAMfRJNsNe/Stid/gwHSOfHrOtw9EhAY2AHvdKZ/k/MggcYELFCJz/Sn2pL8b8JMw==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
