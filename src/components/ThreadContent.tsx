@@ -3,6 +3,9 @@ import styled, { css } from "styled-components";
 import moment from "moment";
 import colors from "../constants/colors";
 import Button from "./UI/Button";
+import useModal from "../hooks/useModal";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/reducers";
 
 interface ThreadContentProps {
   by: {
@@ -28,6 +31,9 @@ function ThreadContent({
   level = 0,
 }: ThreadContentProps) {
   const formattedDate = moment(createdAt).format("YYYY-MM-DD hh:mm:ss");
+  const modal = useModal("subthread");
+  const { isDark } = useSelector((state: RootState) => state.theme);
+
   const jsx = (
     <Wrap level={level}>
       <header
@@ -62,6 +68,13 @@ function ThreadContent({
               👎
             </span>{" "}
             비추천 {vote.down}
+          </Button>
+          <Button
+            color={!isDark ? colors.black : colors.white}
+            background={!isDark ? colors.white : colors.black}
+            onClick={modal.open}
+          >
+            답글 달기
           </Button>
         </div>
       </footer>
