@@ -3,6 +3,7 @@ import colors from "../../constants/colors";
 
 interface ButtonProps {
   full?: Boolean;
+  color?: string;
 }
 const Button = styled.button<ButtonProps>`
   font-size: 1rem;
@@ -11,7 +12,7 @@ const Button = styled.button<ButtonProps>`
   padding: 0.5em 1em;
   border: 0;
   border-radius: 0.5em;
-  background: ${colors.primary};
+  background: ${(props) => props.color || colors.primary};
   color: white;
 
   ${({ full }) =>
