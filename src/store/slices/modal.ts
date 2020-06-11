@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
   login: false,
+  subthread: false,
 };
 export type Modals = keyof typeof initialState;
 
