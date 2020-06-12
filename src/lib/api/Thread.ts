@@ -26,5 +26,13 @@ class Thread {
       throw parseError(e);
     }
   }
+
+  public static async postSubthread(id: string, content: string) {
+    try {
+      await getClient({ auth: true }).post("/thread/" + id);
+    } catch (e) {
+      throw parseError(e);
+    }
+  }
 }
 export default Thread;
