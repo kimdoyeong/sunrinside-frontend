@@ -29,7 +29,20 @@ class Thread {
 
   public static async postSubthread(id: string, content: string) {
     try {
-      await getClient({ auth: true }).post("/thread/" + id);
+      await getClient({ auth: true }).post("/thread/" + id, { content });
+    } catch (e) {
+      throw parseError(e);
+    }
+  }
+
+  public static async postThread(title: string, content: string) {
+    try {
+      const {
+        data: {
+          data: { id },
+        },
+      } = await getClient({ auth: true }).post("/thread", { title, content });
+      return id;
     } catch (e) {
       throw parseError(e);
     }

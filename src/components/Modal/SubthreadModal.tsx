@@ -5,14 +5,16 @@ import Button from "../UI/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/reducers";
 import useModal from "../../hooks/useModal";
-import threadSlice from "../../store/slices/thread";
+import threadSlice, { getThreadThunk } from "../../store/slices/thread";
 import Thread from "../../lib/api/Thread";
 
 function SubthreadModal() {
   const [text, setText] = useState("");
   const editor = useRef<HTMLTextAreaElement | null>(null);
   const { isOpen, close } = useModal("subthread");
-  const { subthreadId } = useSelector((state: RootState) => state.thread);
+  const { subthreadId, thread } = useSelector(
+    (state: RootState) => state.thread
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,15 +29,25 @@ function SubthreadModal() {
   function onSubmit(e: any) {
     e.preventDefault();
 
-    if (!text || !subthreadId) return;
-    Thread.postSubthread(subthreadId, text).then(close);
+    if (!text || !subthreadId || !thread || !thread._id) return;
+    Thread.postSubthread(subthreadId, text).then(() => {
+      dispatch(getThreadThunk(thread._id));
+      close();
+    });
   }
 
   return (
     <Modal modalName="subthread">
       <EditorWrap onSubmit={onSubmit}>
-        <textarea className="text-editor" onChange={onChange} ref={editor} />
-        <Button full>작성</Button>
+        <textarea
+          className="text-editor"
+          onChange={onChange}
+          ref={editor}
+          value={text}
+        />
+        <Button full type="submit">
+          작성
+        </Button>
       </EditorWrap>
     </Modal>
   );

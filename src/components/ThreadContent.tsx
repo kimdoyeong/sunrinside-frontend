@@ -4,8 +4,9 @@ import moment from "moment";
 import colors from "../constants/colors";
 import Button from "./UI/Button";
 import useModal from "../hooks/useModal";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store/reducers";
+import threadSlice from "../store/slices/thread";
 
 interface ThreadContentProps {
   by: {
@@ -21,6 +22,7 @@ interface ThreadContentProps {
   };
   subthreads: any[];
   level?: number;
+  _id: string;
 }
 function ThreadContent({
   vote,
@@ -28,12 +30,17 @@ function ThreadContent({
   content,
   createdAt,
   subthreads,
+  _id,
   level = 0,
 }: ThreadContentProps) {
   const formattedDate = moment(createdAt).format("YYYY-MM-DD hh:mm:ss");
   const modal = useModal("subthread");
   const { isDark } = useSelector((state: RootState) => state.theme);
-
+  const dispatch = useDispatch();
+  function openModal() {
+    dispatch(threadSlice.actions.setId(_id));
+    modal.open();
+  }
   const jsx = (
     <Wrap level={level}>
       <header
@@ -72,7 +79,7 @@ function ThreadContent({
           <Button
             color={!isDark ? colors.black : colors.white}
             background={!isDark ? colors.white : colors.black}
-            onClick={modal.open}
+            onClick={openModal}
           >
             답글 달기
           </Button>

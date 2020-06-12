@@ -1,25 +1,30 @@
-import React, { useCallback } from "react";
+import React, { useEffect } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import Loader from "react-loader";
 import styled from "styled-components";
 import Layout from "../components/Layout";
-import useAsync from "../hooks/useAsync";
-import Thread from "../lib/api/Thread";
 import ThreadContent from "../components/ThreadContent";
 import Heading from "../components/UI/Heading";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store/reducers";
+import { getThreadThunk } from "../store/slices/thread";
 
 function ThreadViewPage({
   match: { params },
 }: RouteComponentProps<{ id: string }>) {
-  const func = useCallback(() => Thread.getThread(params.id), [params.id]);
-  const { data, loading } = useAsync(func, { errorToast: true });
+  const dispatch = useDispatch();
+  const { loading, thread } = useSelector((state: RootState) => state.thread);
+
+  useEffect(() => {
+    dispatch(getThreadThunk(params.id));
+  }, [params.id, dispatch]);
 
   return (
-    <Layout title={loading ? "로딩 중..." : data.title}>
+    <Layout title={loading ? "로딩 중..." : thread && thread.title}>
       <Loader loaded={!loading}>
-        <Heading>{data && data.title}</Heading>
+        <Heading>{thread && thread.title}</Heading>
         <ThreadList>
-          <ThreadContent {...data} />
+          <ThreadContent {...thread} />
         </ThreadList>
       </Loader>
     </Layout>
